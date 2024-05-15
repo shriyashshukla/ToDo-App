@@ -15,12 +15,12 @@ const getTopics = async () => {
     return await res.json();
   } catch (error) {
     console.log("Error loading topics: ", error);
-    return { topics: [] };  // Return an empty array if there's an error
+    return { topics: [] }; 
   }
 };
 
 export default async function TopicsList() {
-  const { topics } = await getTopics() || { topics: [] };  // Ensure topics is defined
+  const { topics } = await getTopics() || { topics: [] }; 
 
   return (
     <>
@@ -28,23 +28,23 @@ export default async function TopicsList() {
         topics.map((t) => (
           <div
             key={t._id}
-            className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
+            className="p-6 border border-slate-300 rounded-lg my-4 flex justify-between gap-6 items-start hover:shadow-lg transition-shadow duration-200"
           >
             <div>
-              <h2 className="font-bold text-2xl">{t.title}</h2>
-              <div>{t.description}</div>
+              <h2 className="font-bold text-2xl mb-2">{t.title}</h2>
+              <p className="text-slate-600">{t.description}</p>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-3 items-center">
               <RemoveBtn id={t._id} />
               <Link href={`/editTopic/${t._id}`}>
-                <HiPencilAlt size={24} />
+                <HiPencilAlt size={24} className="text-blue-500 hover:text-blue-600 transition-colors duration-200" />
               </Link>
             </div>
           </div>
         ))
       ) : (
-        <p className="text-center text-slate-500">No topics available</p>
+        <p className="text-center text-slate-500 mt-6">No topics available</p>
       )}
     </>
   );
