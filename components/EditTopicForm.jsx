@@ -33,24 +33,29 @@ export default function EditTopicForm({ id, title, description }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <input
-        onChange={(e) => setNewTitle(e.target.value)}
-        value={newTitle}
-        className="border border-slate-500 px-8 py-2"
-        type="text"
-        placeholder="Topic Title"
-      />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 bg-white shadow-md rounded-md">
+      <label className="flex flex-col">
+        <span className="font-semibold mb-1">Topic Title</span>
+        <input
+          onChange={(e) => setNewTitle(e.target.value)}
+          value={newTitle}
+          className="border border-slate-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="text"
+          placeholder="Enter topic title"
+        />
+      </label>
 
-      <input
-        onChange={(e) => setNewDescription(e.target.value)}
-        value={newDescription}
-        className="border border-slate-500 px-8 py-2"
-        type="text"
-        placeholder="Topic Description"
-      />
+      <label className="flex flex-col">
+        <span className="font-semibold mb-1">Topic Description</span>
+        <textarea
+          onChange={(e) => setNewDescription(e.target.value)}
+          value={newDescription}
+          className="border border-slate-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-24"
+          placeholder="Enter topic description"
+        />
+      </label>
 
-      <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
+      <button className="bg-green-600 hover:bg-green-700 font-bold text-white py-2 px-4 rounded-md w-fit self-center transition duration-200">
         Update Topic
       </button>
     </form>

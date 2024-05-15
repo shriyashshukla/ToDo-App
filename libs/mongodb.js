@@ -1,14 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const url = 'mongodb+srv://shriyash:harishukla20@doctor.vmi57la.mongodb.net/E-Doc?retryWrites=true&w=majority';
+const connectMongoDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to MongoDB.");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-// asynchronous - return Promise
-mongoose.connect(url)
-.then((result) => {
-    console.log('database connected successfully');
-})
-.catch((err) => {
-    console.log(err);
-});
-
-module.exports = mongoose;
+export default connectMongoDB;
